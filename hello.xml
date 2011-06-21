@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+  <ModulePrefs >
+    <Require feature="googleapis.client"/>
+    <Require feature="locked-domain"/>
+    <Require feature="views"/>
+  </ModulePrefs>
+<Content view="canvas" type="html"><![CDATA[
+
+<style type="text/css">
+  img.personpic {height:16px;width:16px}
+</style>
+
+<font size=+2><b><div id='signin'>
+</div></b></font>
+<a href="javascript:clearDebug()">clear</a><br/>
+<div id='debug'>DEBUG</div>
+<div id='callbackLog' style='color: red'>callbacklog</div><br>
+
+<script>
+//  Welcome Section......
+//  Welcome Section......
+//  Welcome Section......
+//  Welcome Section......
+//  Welcome Section......
+//  Welcome Section......
+//  Welcome Section......
+/*
+Getting started, what you need.
+
+Extra the following from this sample gadget to get up and running ASAP.
+
+At a minimum.
+- gameUtils class.
+- The script src appsapi.js block
+- With this you are ready to call the viral channels (google.sendPost, google.sendNotification)
+- To make RESTful calls: google.plusone.api('/people/me', getMeCallback);
+
+Other functions
+- Any other functions you want (eg: getMe, getRecommended, etc...)
+*/
+
+
+function stringify(x) {
+  if (x == null) return '[null]';
+  x = gadgets.json.stringify(x);
+
+  return x.replace( /\n/g, '<br />' );
+}
+
+function _gel(id) {
+  return document.getElementById(id);
+}
+
+function _hesc(s) {
+  return gadgets.util.escapeString(s);
+}
+
+var debugOut = [];
+
+function debugPrint(x, noesc) {
+  if (window['console'] && window.console.log) {
+    console.log(x);
+  }
+
+  var e = document.getElementById('debug');
+  if (e) {
+    if (noesc) debugOut.push(x);
+    else debugOut.push(_hesc(x));
+    e.innerHTML = debugOut.join('<br>');
+    if (window['gadgets'] && gadgets.window) {
+      gadgets.window.adjustHeight();
+    }
+  }
+}
+
+function clearDebug() {
+  debugOut = [];
+  debugPrint('cleared');
+  if (window['gadgets'] && gadgets.window) {
+    gadgets.window.adjustHeight();
+  }
+}
+
+</script>
+
+<script>
+var gameUtils = {};
+
+gameUtils.getInitialScopes = function() {
+  return [ 'https://www.googleapis.com/auth/emeraldsea.circles.read',
+           'https://www.googleapis.com/auth/userinfo.profile' ]
+};
+
+// Passed in as the callback to the appsapi script
+gameUtils.ApisAreReady = function(loggedIn) {
+  console.log('ApisAreReady, loggedIn: ' + loggedIn);
+  if (loggedIn) {
+    _gel('signin').innerHTML = '';
+    getMe();
+    getRecommended();
+  } else {
+    _gel('signin').innerHTML = 'You need to signin, <a href="javascript:google.doAuth(false)">Click Here</a>';
+  }
+};
+
+
+</script>
+<script src="https://apps.sandbox.google.com/js/appsapi.js?container=gcjs&amp;c=2&amp;debug=&amp;_propertyRenaming=0&amp;_prettyPrint=1">
+  {
+    'appsapi': {},
+    'appsutil': {
+      'apis_are_ready': gameUtils.ApisAreReady,
+      'required_scopes': gameUtils.getInitialScopes()
+     },
+     'poclient': {
+       'update_session': google.updateSessionCallback
+     }
+  }
+</script>
+
+<a href="javascript:google.doAuth(false)">FirstAuth(false) (aka SignIn)</a><br>
+<a href="javascript:google.doAuth(true)">FirstAuth(true)</a><br>
+<br>
+
+<a href="javascript: sendStreamPost()">Send Stream Post</a><br>
+<table border=0>
+  <tr>
+    <td>Send Gift</td>
+    <td><a href="javascript:sendNotification('gift', false, null)">(no recipients)</a></td>
+    <td><a href="javascript:sendNotification('gift', true, null)">(WITH recipients)</a></td>
+  </tr>
+  <tr>
+    <td>Send Invitation</td>
+    <td><a href="javascript:sendNotification('invite', false, null)">(no recipients)</a></td>
+    <td><a href="javascript:sendNotification('invite', true, null)">(WITH recipients)</a></td>
+  </tr>
+  <tr>
+    <td>Send Message
+    <td><a href="javascript:sendNotification('message', false, null)">(no recipients)</a></td>
+    <td><a href="javascript:sendNotification('message', true, null)">(WITH recipients)</a></td>
+  </tr>
+</table>
+<br>
+<div id=selfRSM>RSM specific</div>
+<br>
+<div id=friendsRSM>RSM specific</div><br/>
+
+<br>Apiary/RESTful<br>
+<a href="javascript:getMe()">getMe</a><br/>
+<a href="javascript:getRecommended()">getRecommended</a><br>
+<a href="javascript:getRecommendedHasAppTrue()">getRecommendedHasAppTrue</a><br>
+<a href="javascript:getRecommendedHasAppFalse()">getRecommendedHasAppFalse</a><br>
+
+
+Helpful links<br>
+<a href="https://www.google.com/accounts/IssuedAuthSubTokens" target=_blank>My Account (GAIA app access)</a><br>
+<a href="https://sandbox.google.com/developer/games/console" target=_blank>Prod Dev Console</a><br>
+<a href="https://apps.sandbox.google.com/_/games/developerMode?enable=true" target=_blank>Developer Mode On</a><br>
+<a href="https://apps.sandbox.google.com/_/games/developerMode?enable=false" target=_blank>Developer Mode Off</a><br>
+<br>
+
+Debugging stuff<br>
+<a href="javascript:getGadgetsConfig()">getGadgetsConfig</a><br>
+<a href="javascript:getAuthToken()">getAuthToken</a><br>
+<a href="javascript:refreshToken()">Refresh Token</a><br>
+<br>
+
+<script>
+
+var personMe = null;
+var theFriends = [];
+
+// hard coded googlers...
+theFriends = ['110885671099056346036', '103276978310667028383', '110608505967802603978' ];
+
+var quotes = [];
+var images = [];
+
+var callbackLogIndex = 0;
+
+function isResponseAnError(response) {
+  return response != null && 'error' in response && typeof(response['error']) === 'object';
+}
+
+function requestCallback(response) {
+  callbackLogIndex++;
+  var callbackLogDiv = document.getElementById('callbackLog');
+
+  debugPrint('requestCallback, response: ' + stringify(response));
+
+  if (isResponseAnError(response)) {
+    callbackLogDiv.innerHTML =
+        'RequestCallback error.<br/>' +
+        'Action number: ' + callbackLogIndex + '<br/>' +
+        'Code: ' + response.error.code + '<br/>' +
+        'Msg: ' + response.error.message;
+  } else if (response != null) {
+    callbackLogDiv.innerHTML =
+        'RequestCallback successful.<br/>' +
+        'Action number: ' + callbackLogIndex + '<br/>' +
+        'Data: ' + _hesc(gadgets.json.stringify(response));
+  } else {
+    callbackLogDiv.innerHTML =
+        'RequestCallback got a null response.<br/>' +
+        'Action number: ' + callbackLogIndex;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
+
+
+function getRandomImage() {
+  var r = Math.floor(Math.random() * (images.length + 1));
+  return images[r];
+}
+
+
+// Duplicates are possible.
+function getRandomImageList() {
+  var images = Math.floor(Math.random() * 5)+1;
+  var list = [];
+  for (var i = 0; i < images; i++) {
+    list.push(getRandomImage());
+  }
+  return list;
+}
+
+function getRandomQuote() {
+  return quotes[Math.floor(Math.random() * quotes.length)];
+}
+
+function getViewParams(opt_testEscaping) {
+  var viewParams = {"season" : "Winter", "destination" : "Tahoe"};
+  if (opt_testEscaping) {
+    viewParams["season"] = "Winter/Fall";
+    viewParams["rank"] = "#1";
+    viewParams["%70%65%72%63%65%6e%74%73"] =
+      "'%20', '%23', '%25', '%2525', '%26', '%2F', '%3F', and '+' " +
+      "includes seven percent signs, a 2525, and a plus sign";
+    viewParams["percents"] =
+      "' ', '#', '&', '+', '%', '%25', '/', '?', and ' ' " +
+      "includes two quoted spaces, a number sign, two percent signs, a 25, a solidus, and a question mark";
+  }
+  return viewParams;
+}
+
+
+function sendStreamPost() {
+  var activity_params = {};
+  var imageList = getRandomImageList();
+  var viewParams = getViewParams();
+  var body = getRandomQuote();
+
+  google.sendPost({
+    'title' : 'Trusted Tester Harness: Title',
+    'anchortext': 'Play Now',
+    'params': viewParams,
+    'body': body,
+    'images': imageList},
+    requestCallback);
+}
+
+function sendNotification(type, hasRecipients, theRecipient) {
+  var recipients = null;
+  if (hasRecipients && theFriends && theFriends.length) {
+    recipients = theFriends;
+    debugPrint('sending notification to #: ' + theFriends.length);
+  }
+
+  if (theRecipient != null && theRecipient.length) {
+    recipients = [ theRecipient ];
+    debugPrint('sending notification to theRecipient: ' + theRecipient);
+  }
+
+  var viewParams = getViewParams();
+  var image = getRandomImage();
+  var body = getRandomQuote();
+
+  google.sendNotification({
+    'type': type,
+    'recipients': recipients,
+    'params': viewParams,
+    'body': body,
+    'images': [image]},
+    requestCallback);
+}
+
+
+function getRecommendedCallback(data) {
+  debugPrint('getRecommendedcallback');
+  gadgets.window.adjustHeight();
+
+  var newFriends = [];
+  var html = [];
+
+  html.push('<table border=0 cellpadding=2 cellspacing=2>');
+
+  if (data.items) {
+    debugPrint('# entries: ' + data.items.length);
+    for (var i = 0; i < data.items.length; i++) {
+      if (data.items[i].kind == 'plusone#person') {
+        debugPrint('&nbsp;&nbsp;' +
+            '<img class="personpic" src="' + data.items[i].image.url + '">&nbsp;' +
+            '<a target=_blank href="' + data.items[i].url + '">' +
+            data.items[i].displayName + '</a>' +
+            '&nbsp;hasApp=' + data.items[i].hasApp, true);
+        if (newFriends.length < 10) { // && data.items[i].hasApp == false) {
+          newFriends.push(data.items[i].id);
+          html.push(
+              '<tr>' +
+              '<td>(' + _hesc(data.items[i].displayName) + ')</td>' +
+              '<td><a href="javascript:sendNotification(\'gift\', false, \'' + data.items[i].id + '\')">Gift</a></td>' +
+              '<td><a href="javascript:sendNotification(\'invitation\', false, \'' + data.items[i].id + '\')">Invitation</a></td>' +
+              '<td><a href="javascript:sendNotification(\'message\', false, \'' + data.items[i].id + '\')">Message</a></td>' +
+              '</tr>');
+        }
+      } else {
+        debugPrint('@' + i + ' unknown kind: ' + data.items[i].kind);
+      }
+    }
+  } else {
+    debugPrint('Get Recommended Data: ' + stringify(data));
+  }
+
+  html.push('</table>');
+
+  if (newFriends.length != 0) {
+    theFriends = newFriends;
+    _gel('friendsRSM').innerHTML = html.join('');
+  }
+
+  gadgets.window.adjustHeight();
+}
+
+function getRecommended() {
+  google.plusone.api('/people/me/people/recommended?alt=json', getRecommendedCallback);
+}
+
+function getRecommendedHasAppTrue() {
+  google.plusone.api('/people/me/people/recommended?hasApp=true&alt=json', getRecommendedCallback);
+}
+
+function getRecommendedHasAppFalse() {
+  google.plusone.api('/people/me/people/recommended?hasApp=false&alt=json', getRecommendedCallback);
+}
+
+function getMeCallback(data) {
+  var html = [];
+  if (data) {
+    // fields:
+    // data.id (obfuscated gaia id)
+    // data.displayName
+    // data.url (profile page url)
+    // data.image.url
+    // data.email
+    debugPrint('getMeCallback: me: ' + data.id + "=" + data.displayName + '(<b>' + data.email + '</b>)', true);
+    personMe = data;
+    html.push('<a href="javascript:sendNotification(\'gift\', false, \'' + data.id +
+              '\')">Send Gift to SELF(' + _hesc(data.displayName) + ')</a>');
+    html.push('<a href="javascript:sendNotification(\'invite\', false, \'' + data.id +
+              '\')">Send Invitation to SELF(' + _hesc(data.displayName) + ')</a>');
+    html.push('<a href="javascript:sendNotification(\'message\', false, \'' + data.id +
+              '\')">Send Message to SELF(' + _hesc(data.displayName) + ')</a>');
+  } else {
+    debugPrint('getMeCallback: nodata');
+  }
+
+  _gel('selfRSM').innerHTML = html.join('<br>');
+  gadgets.window.adjustHeight();
+}
+
+function getMe() {
+  debugPrint('loading /people/me');
+  google.plusone.api('/people/me', getMeCallback);
+  gadgets.window.adjustHeight();
+}
+
+function refreshToken() {
+  debugPrint('Token: ' + shindig.auth.getSecurityToken());
+}
+
+function refreshViewParams() {
+  var gadgetParams = gadgets.views.getParams();
+  debugPrint('View Params: ' + _hesc(gadgets.json.stringify(gadgetParams)));
+}
+
+function getAuthToken() {
+  debugPrint('Auth Token: ' + stringify(google.getToken()));
+}
+
+function getGadgetsConfig() {
+  debugPrint('GadgetsConfig: ' + stringify(gadgets.config.get()));
+}
+
+function initData() {
+  quotes.push("It's that Hansel, he's so hot right now.");
+  quotes.push("I'm a coal miner, not a professional film or television actor.");
+  quotes.push("It's a walk-off!");
+  quotes.push("I'm not an ambi-turner");
+  quotes.push("On, Snap!");
+  quotes.push("What's the dealio, yo?");
+  quotes.push("Or are you here to tell me what a bad eugoogoolizer I am?");
+  quotes.push("You is talking loco and I like it!");
+  quotes.push("Words can only hurt you if you try to read them. Don't play their game!");
+  quotes.push("What is this? A center for ants?");
+  quotes.push("Who are you tryin' to get crazy with, ese? Don't you know I'm loco?");
+  quotes.push("Orange Mocha Frappuccino!");
+
+  images.push('http://lh3.ggpht.com/_1rL3G0Y32aQ/S9NszkD1F3I/AAAAAAAAJEM/7zamE3EAIoA/s300/IMG_0586.jpg');
+  images.push('http://lh4.ggpht.com/_1rL3G0Y32aQ/S9NtSpWeV5I/AAAAAAAAJd4/wJdXRCWA-_c/s300/DSC_3019.jpg');
+  images.push('http://lh6.ggpht.com/_1rL3G0Y32aQ/S9NtK7HDSkI/AAAAAAAAJEM/WJ_-QBmkmgw/s300/IMG_0671.jpg');
+  images.push('http://lh4.ggpht.com/_1rL3G0Y32aQ/SybnSvu75UI/AAAAAAAADcQ/3Os4Vyn0HJ4/s300/DSC_0350.jpg');
+  images.push('http://lh6.ggpht.com/_1rL3G0Y32aQ/Szqizc_6UwI/AAAAAAAAEAw/oA-HIBYtQdk/s300/DSC_1835.jpg');
+  images.push('http://lh6.ggpht.com/_1rL3G0Y32aQ/Szqi0UfSXFI/AAAAAAAAEA0/3lD8ieNGU8k/s300/DSC_1930.jpg');
+  images.push('http://lh6.ggpht.com/_1rL3G0Y32aQ/SzuYAvM4lTI/AAAAAAAAEG4/uyIwtHWrGqg/s300/IMG_0482.jpg');
+  images.push('http://lh4.ggpht.com/_1rL3G0Y32aQ/SycXItmerGI/AAAAAAAADdQ/x9rsg1JrQ9I/s300/DSC_0588.jpg');
+  images.push('http://lh5.ggpht.com/_1rL3G0Y32aQ/SycXHrlb2dI/AAAAAAAADdM/l8nbkXlWBig/s300/DSC_0563.jpg');
+  images.push('http://lh3.ggpht.com/_1rL3G0Y32aQ/SycXC8ZwMVI/AAAAAAAADdA/pLYqPbi7wgM/s300/DSC_0480.jpg');
+  images.push('http://lh3.ggpht.com/_1rL3G0Y32aQ/SxNKSmdRvjI/AAAAAAAACvo/ggYICOKiuVc/s300/D3N_6977.jpg');
+  images.push('http://lh4.ggpht.com/_1rL3G0Y32aQ/SoTKVVWi01I/AAAAAAAAA9c/SllIcusHf5E/s300/IMG_1248.jpg');
+  images.push('http://lh4.ggpht.com/_1rL3G0Y32aQ/SveEkSv_41I/AAAAAAAACCM/gve8gwUHHcw/s300/YoseHike_%287%29.jpg');
+  images.push('http://lh4.ggpht.com/_1rL3G0Y32aQ/SvuPme7vhGI/AAAAAAAACN0/kU1MRu4kju0/s300/acd.jpg');
+  images.push('http://lh3.ggpht.com/_1rL3G0Y32aQ/SvuPoH6rdLI/AAAAAAAACN8/lD_ucdXTIpQ/s300/acf.jpg');
+  images.push('http://lh4.ggpht.com/_1rL3G0Y32aQ/SvuPnRYDRnI/AAAAAAAACN4/quWAdzBs1wQ/s300/ace.jpg');
+  images.push('http://lh3.ggpht.com/_1rL3G0Y32aQ/Svd8_VmqUqI/AAAAAAAACAQ/0IKzoXkgS5I/s300/DontJump.jpg');
+  images.push('http://lh6.ggpht.com/_1rL3G0Y32aQ/SvwJSlyDRpI/AAAAAAAACYA/yNFxqYP3OXY/s300/IMG_0563.jpg');
+  images.push('http://lh6.ggpht.com/_1rL3G0Y32aQ/SvwI5xgK85I/AAAAAAAACW4/LVTt7cTZGSk/s300/IMG_0432_ShanghaiBundAtNight2.jpg');
+  images.push('http://lh3.ggpht.com/_1rL3G0Y32aQ/SvwJBaux2_I/AAAAAAAACXM/hSRTmT-3sDs/s300/IMG_0565_HangzhouTemple1.jpg');
+  images.push('http://lh3.ggpht.com/_1rL3G0Y32aQ/TB0Qh8gukZI/AAAAAAAAJ9E/RYbp91c3u3g/s300/DSC_3295.jpg');
+  images.push('http://lh4.ggpht.com/_1rL3G0Y32aQ/TB0QiiOEigI/AAAAAAAAJ8s/HwE5W0rz4pE/s300/DSC_3249.jpg');
+  images.push('http://lh4.ggpht.com/_1rL3G0Y32aQ/SuOXYbFTVzI/AAAAAAAABm0/t2XJ3nlezL0/s300/DSC_0244.jpg');
+  images.push('http://lh4.ggpht.com/_1rL3G0Y32aQ/SvDLBHNLCMI/AAAAAAAAByw/jCYdzuJlQZs/s300/_DSC6779.jpg');
+  images.push('http://lh5.ggpht.com/_1rL3G0Y32aQ/SvDJM76R8RI/AAAAAAAAByg/zCpmJSxUsB0/s300/_DSC6480t.jpg');
+  images.push('http://lh4.ggpht.com/_1rL3G0Y32aQ/SvDJAXKWoTI/AAAAAAAAByA/Srg-2oMyR50/s300/_DSC6390.jpg');
+  images.push('http://lh6.ggpht.com/_1rL3G0Y32aQ/St5_AHZHrCI/AAAAAAAABbU/QoXhAjpjzak/s300/IMG_1939.jpg');
+  images.push('http://lh6.ggpht.com/_1rL3G0Y32aQ/SwhDG23G2gI/AAAAAAAAClA/tlPgLZJoALg/s300/headshot2.jpg');
+}
+
+
+function init() {
+  initData();
+  refreshViewParams();
+  refreshToken();
+}
+
+init();
+</script>
+]]>
+</Content>
+</Module>
