@@ -38,7 +38,7 @@ gameUtils.sendPost = function (){
 }
 
 </script>
-<script src="https://apps.sandbox.google.com/js/appsapi.js?container=gcjs&amp;c=2&amp;debug=&amp;_propertyRenaming=0&amp;_prettyPrint=1">
+<script src="https://apps.sandbox.google.com/js/appsapi.js?container=gcjs&c=2&debug=1&_propertyRenaming=0&_prettyPrint=1">
   {
     'appsapi': {},
     'appsutil': {
