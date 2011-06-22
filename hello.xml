@@ -25,8 +25,8 @@ gameUtils.ApisAreReady = function(loggedIn) {
   }
 };
 
-var callback = function(r) { console.log(r); }
 gameUtils.sendPost = function (){
+  var callback = function(r) { console.log(r); }
   google.sendPost({
     title: 'I lost the game',
     body: 'The body of the post',
