@@ -24,11 +24,10 @@ gameUtils.ApisAreReady = function(loggedIn) {
     alert( "I am not signed in" );
   }
 };
-
+/**
 gameUtils.sendPost = function (){
   var callback = function(r) { console.log(r); };
   console.log("I got here" );
-/**
   google.sendPost({
     title: 'I lost the game',
     body: 'The body of the post',
