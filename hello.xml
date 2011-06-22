@@ -24,7 +24,7 @@ gameUtils.ApisAreReady = function(loggedIn) {
     alert( "I am not signed in" );
   }
 };
-+
+
 gameUtils.sendPost = function (){
   var callback = function(r) { console.log(r); };
   google.sendPost({
