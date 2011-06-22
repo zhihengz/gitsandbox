@@ -26,7 +26,7 @@ gameUtils.ApisAreReady = function(loggedIn) {
 };
 
 var callback = function(r) { console.log(r); }
-function sendPost(){
+gameUtils.sendPost = function (){
   google.sendPost({
     title: 'I lost the game',
     body: 'The body of the post',
@@ -54,7 +54,7 @@ function sendPost(){
 hello world
 </h1>
 <div>
-<a href="javascript:sendPost()">send post</a>
+<a href="javascript:gameUtils.sendPost()">send post</a>
 </div>
 ]]>
 </Content>
