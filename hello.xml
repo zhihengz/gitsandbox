@@ -24,7 +24,7 @@ gameUtils.ApisAreReady = function(loggedIn) {
     alert( "I am not signed in" );
   }
 };
-
+var callback = function(r) { console.log(r); }
 function sendPost(){
   google.sendPost(
     title: 'I lost the game';
