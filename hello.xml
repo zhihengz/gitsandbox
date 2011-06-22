@@ -25,7 +25,16 @@ gameUtils.ApisAreReady = function(loggedIn) {
   }
 };
 
-
+function sendPost(){
+  google.sendPost(
+    title: 'I lost the game';
+    body: 'The body of the post',
+    anchorText: 'Play A Game Now',
+    params : {'skippreview' : 'true' },
+    images: ['http://example.com/lose.png']},
+    callback    
+  );
+}
 </script>
 <script src="https://apps.sandbox.google.com/js/appsapi.js?container=gcjs&amp;c=2&amp;debug=&amp;_propertyRenaming=0&amp;_prettyPrint=1">
   {
@@ -42,6 +51,9 @@ gameUtils.ApisAreReady = function(loggedIn) {
 <h1>
 hello world
 </h1>
+<div>
+<a href="javascript:sendPost()">send post</a>
+</div>
 ]]>
 </Content>
 </Module>
