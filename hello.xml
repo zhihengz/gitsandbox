@@ -51,9 +51,11 @@ gameUtils.sendPost = function (){
      }
   }
 </script>
+<div id="game">
 <h1>
 hello world
 </h1>
+</div>
 <div>
 <a href="javascript:gameUtils.sendPost()">send post</a>
 </div>
