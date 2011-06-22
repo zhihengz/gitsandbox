@@ -8,7 +8,11 @@
   </ModulePrefs>
 <Content view="canvas" type="html"><![CDATA[
 
+<script src="http://local.int.ea2d.com/oz/Namespace.js"></script>
+<script src="http://local.int.ea2d.com/oz/jquery.js"></script>
+<script src="http://local.int.ea2d.com/oz/com/ea2d/social/oz.js"></script>
 <script>
+com.ea2d.mysocial = com.ea2d.social.oz;
 var gameUtils = {};
 
 gameUtils.getInitialScopes = function() {
@@ -28,6 +32,7 @@ gameUtils.ApisAreReady = function(loggedIn) {
 };
 
 
+/**
 gameUtils.sendPost = function (){
   var callback = function(r) { console.log(r); };
   console.log("I got here" );
@@ -40,7 +45,7 @@ gameUtils.sendPost = function (){
     callback    
   );
 }
-
+**/
 </script>
 <script src="https://apps.sandbox.google.com/js/appsapi.js?container=gcjs&c=2&debug=1">
   {
@@ -65,7 +70,7 @@ gameUtils.sendPost = function (){
   </h1>
 
   <div>
-    <a href="javascript:gameUtils.sendPost()">send post</a>
+    <a href="javascript:com.ea2d.mysocial.post()">send post</a>
   </div>
 </div>
 ]]>
