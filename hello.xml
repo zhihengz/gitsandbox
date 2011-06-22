@@ -24,11 +24,11 @@ gameUtils.ApisAreReady = function(loggedIn) {
     alert( "I am not signed in" );
   }
 };
-/**
+
 var callback = function(r) { console.log(r); }
 function sendPost(){
-  google.sendPost(
-    title: 'I lost the game';
+  google.sendPost({
+    title: 'I lost the game',
     body: 'The body of the post',
     anchorText: 'Play A Game Now',
     params : {'skippreview' : 'true' },
@@ -36,7 +36,7 @@ function sendPost(){
     callback    
   );
 }
-**/
+
 </script>
 <script src="https://apps.sandbox.google.com/js/appsapi.js?container=gcjs&amp;c=2&amp;debug=&amp;_propertyRenaming=0&amp;_prettyPrint=1">
   {
