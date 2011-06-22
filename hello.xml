@@ -43,6 +43,9 @@
       <div>
 	<a href="#" onClick="com.ea2d.mysocial.invite()">invite friends</a>
       </div>
+      <div>
+	<a href="#" onClick="com.ea2d.mysocial.message()">send message</a>
+      </div>
       <div id="fb-uid"></div>
       <div id="fb-token"></div>
     </div>
