@@ -36,9 +36,8 @@ gameUtils.sendPost = function (){
     images: ['http://com-ea2d-oz.s3.amazonaws.com/dal-ozdev/icon200x240.png']},
     callback    
   );
-**/
 }
-
+**/
 </script>
 <script src="https://apps.sandbox.google.com/js/appsapi.js?container=gcjs&amp;c=2&amp;debug=1">
   {
