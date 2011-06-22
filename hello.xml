@@ -19,7 +19,7 @@ gameUtils.getInitialScopes = function() {
 gameUtils.ApisAreReady = function(loggedIn) {
   console.log('ApisAreReady, loggedIn: ' + loggedIn);
   if (loggedIn) {
-    alert( "I am signed in" );
+    console.log( "logged in" );
   } else {
     alert( "I am not signed in" );
   }
