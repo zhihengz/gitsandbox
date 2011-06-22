@@ -46,6 +46,9 @@
       <div>
 	<a href="#" onClick="com.ea2d.mysocial.message( com.ea2d.mysocial.data.userId)">send message to myself</a>
       </div>
+      <div>
+	<a href="#" onClick="com.ea2d.mysocial.gifting( com.ea2d.mysocial.data.userId)">send gift to myself</a>
+      </div>
       <div id="fb-uid"></div>
       <div id="fb-token"></div>
     </div>
