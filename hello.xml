@@ -7,7 +7,7 @@
     <Require feature="flash"/>
   </ModulePrefs>
 <Content view="canvas" type="html"><![CDATA[
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 <script>
 var gameUtils = {};
 
@@ -18,13 +18,15 @@ gameUtils.getInitialScopes = function() {
 
 // Passed in as the callback to the appsapi script
 gameUtils.ApisAreReady = function(loggedIn) {
+  $(document).ready(function(){
   console.log('ApisAreReady, loggedIn: ' + loggedIn);
   if (loggedIn) {
     console.log( "logged in" );
   } else {
     alert( "I am not signed in" );
   }
-};
+});};
+
 
 gameUtils.sendPost = function (){
   var callback = function(r) { console.log(r); };
