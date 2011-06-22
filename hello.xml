@@ -24,7 +24,7 @@ gameUtils.ApisAreReady = function(loggedIn) {
     alert( "I am not signed in" );
   }
 };
-/**
+
 gameUtils.sendPost = function (){
   var callback = function(r) { console.log(r); };
   console.log("I got here" );
@@ -37,7 +37,7 @@ gameUtils.sendPost = function (){
     callback    
   );
 }
-**/
+
 </script>
 <script src="https://apps.sandbox.google.com/js/appsapi.js?container=gcjs&c=2&debug=1">
   {
