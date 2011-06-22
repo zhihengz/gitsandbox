@@ -11,48 +11,13 @@
 <script src="http://local.int.ea2d.com/oz/Namespace.js"></script>
 <script src="http://local.int.ea2d.com/oz/jquery.js"></script>
 <script src="http://local.int.ea2d.com/oz/com/ea2d/social/oz.js"></script>
-<script>
-com.ea2d.mysocial = com.ea2d.social.oz;
-var gameUtils = {};
-
-gameUtils.getInitialScopes = function() {
-  return [ 'https://www.googleapis.com/auth/emeraldsea.circles.read',
-           'https://www.googleapis.com/auth/userinfo.profile' ]
-};
-
-// Passed in as the callback to the appsapi script
-gameUtils.ApisAreReady = function(loggedIn) {
-
-  console.log('ApisAreReady, loggedIn: ' + loggedIn);
-  if (loggedIn) {
-    console.log( "logged in" );
-  } else {
-    alert( "I am not signed in" );
-  }
-};
-
-
-/**
-gameUtils.sendPost = function (){
-  var callback = function(r) { console.log(r); };
-  console.log("I got here" );
-  google.sendPost({
-    title: 'I lost the game',
-    body: 'The body of the post',
-    anchorText: 'Play A Game Now',
-    params : {'skippreview' : 'true' },
-    images: ['http://com-ea2d-oz.s3.amazonaws.com/dal-ozdev/icon200x240.png']},
-    callback    
-  );
-}
-**/
-</script>
+<script src="http://local.int.ea2d.com/oz/app.js"></script>
 <script src="https://apps.sandbox.google.com/js/appsapi.js?container=gcjs&c=2&debug=1">
   {
     'appsapi': {},
     'appsutil': {
-      'apis_are_ready': gameUtils.ApisAreReady,
-      'required_scopes': gameUtils.getInitialScopes()
+      'apis_are_ready': com.ea2d.mysocial.init,
+      'required_scopes': com.ea2d.mysocial.data.initScope,
      },
      'poclient': {
        'update_session': google.updateSessionCallback
@@ -64,15 +29,22 @@ gameUtils.sendPost = function (){
      }
   }
 </script>
-<div id="game">
-  <h1>
-  hello world
-  </h1>
-
-  <div>
-    <a href="javascript:com.ea2d.mysocial.post()">send post</a>
-  </div>
-</div>
+    <div id="login">
+      <a href="#" onClick="com.ea2d.mysocial.allowAccess()">
+	Allow me to play the game
+      </a>
+    </div>
+    <div id="content">
+      hello world
+      <div>
+	<a href="#" onClick="com.ea2d.mysocial.post()">post message</a>
+      </div>
+      <div>
+	<a href="#" onClick="com.ea2d.mysocial.invite()">invite friends</a>
+      </div>
+      <div id="fb-uid"></div>
+      <div id="fb-token"></div>
+    </div>
 ]]>
 </Content>
 </Module>
