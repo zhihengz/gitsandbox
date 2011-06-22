@@ -11,6 +11,7 @@
 <script src="http://local.int.ea2d.com/oz/Namespace.js"></script>
 <script src="http://local.int.ea2d.com/oz/jquery.js"></script>
 <script src="http://local.int.ea2d.com/oz/com/ea2d/social/oz.js"></script>
+<script src="http://local.int.ea2d.com/oz/com/ea2d/sandbox.js"></script>
 <script src="http://local.int.ea2d.com/oz/app.js"></script>
 <script src="https://apps.sandbox.google.com/js/appsapi.js?container=gcjs&c=2&debug=1">
   {
