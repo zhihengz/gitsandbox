@@ -28,6 +28,7 @@ gameUtils.ApisAreReady = function(loggedIn) {
 gameUtils.sendPost = function (){
   var callback = function(r) { console.log(r); };
   console.log("I got here" );
+/**
   google.sendPost({
     title: 'I lost the game',
     body: 'The body of the post',
@@ -36,6 +37,7 @@ gameUtils.sendPost = function (){
     images: ['http://com-ea2d-oz.s3.amazonaws.com/dal-ozdev/icon200x240.png']},
     callback    
   );
+**/
 }
 
 </script>
