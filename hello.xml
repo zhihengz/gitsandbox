@@ -51,6 +51,11 @@ gameUtils.sendPost = function (){
      },
      'poclient': {
        'update_session': google.updateSessionCallback
+     },
+     'poshare': {
+       'dialogUrl': 'https://apps.sandbox.google.com/_/gadgets/contactPicker',
+       'postUrl': 'https://apps.sandbox.google.com/_/gadgets/contactPicker',
+       'notificationUrl': 'https://apps.sandbox.google.com/_/gadgets/contactPicker'
      }
   }
 </script>
@@ -58,6 +63,7 @@ gameUtils.sendPost = function (){
   <h1>
   hello world
   </h1>
+
   <div>
     <a href="javascript:gameUtils.sendPost()">send post</a>
   </div>
