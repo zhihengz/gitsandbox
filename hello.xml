@@ -12,6 +12,7 @@
 <script src="http://local.int.ea2d.com/oz/jquery.js"></script>
 <script src="http://local.int.ea2d.com/oz/com/ea2d/social/oz.js"></script>
 <script src="http://local.int.ea2d.com/oz/com/ea2d/sandbox.js"></script>
+<script src="http://local.int.ea2d.com/oz/social.js"></script>
 <script src="http://local.int.ea2d.com/oz/app.js"></script>
 <script src="https://apps.sandbox.google.com/js/appsapi.js?container=gcjs&c=2&debug=1">
   {
@@ -38,13 +39,13 @@
     <div id="content">
       hello world
       <div>
-	<a href="#" onClick="com.ea2d.mysocial.post()">post message</a>
+	<a href="#" onClick="publishFeed( feedOnMyWall )">post message</a>
       </div>
       <div>
-	<a href="#" onClick="com.ea2d.mysocial.invite()">invite friends</a>
+	<a href="#" onClick="showInvite()">invite friends</a>
       </div>
       <div>
-	<a href="#" onClick="com.ea2d.mysocial.message( com.ea2d.mysocial.data.userId)">send message to myself</a>
+	<a href="#" onClick="testPublishToOther()">send message to myself</a>
       </div>
       <div>
 	<a href="#" onClick="com.ea2d.mysocial.gifting()">send gift to myself</a>
