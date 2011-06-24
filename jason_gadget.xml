@@ -39,6 +39,7 @@
 
   serveIndexCallback = function(response){
     if (response.rc == 200) {
+      console.log( response.data );
       $("#gameContent").html(response.data);
       iframes.resize({height: document.body.scrollHeight});
     } else {
