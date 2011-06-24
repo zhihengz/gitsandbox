@@ -21,14 +21,14 @@
     if (authorized) {
       $('#loginLink').html("Welcome!");
       console.log("Hooray! We are ready to go!");
-  //    token = google.getToken();
-  //    loadUserInfo();
+      token = google.getToken();
+      loadUserInfo();
     } else {
       console.log("Oops. Looks like you need to authorize this game.");
       $('#loginLink').html('Please <a href="javascript:google.doAuth(false)">click here</a> to sign in!');
     }
   };
-/**
+
   loadUserInfo = function() {
       google.plusone.api('/people/me', function(data) {
         // I should probably do some error checking here
@@ -59,7 +59,6 @@
       })
     });
   }
-**/
 </script>
 <script src="https://apps.sandbox.google.com/js/appsapi.js?container=gcjs&c=2&debug=1">
 {
@@ -80,6 +79,7 @@
 }
 </script>
 <div id="loginLink"></div>
+<div id="ozDebug"></div>
 ]]>
 </Content>
 </Module>
