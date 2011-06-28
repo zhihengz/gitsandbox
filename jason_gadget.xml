@@ -71,12 +71,6 @@
   'poclient': {
     'update_session': google.updateSessionCallback
   },
-   'poshare': {
-    'dialogUrl': 'https://apps.sandbox.google.com/_/gadgets/contactPicker',
-    'postUrl': 'https://apps.sandbox.google.com/_/gadgets/contactPicker',
-    'notificationUrl': 'https://apps.sandbox.google.com/_/gadgets/contactPicker'
-  }
-
 }
 </script>
 <div id="loginLink"></div>
