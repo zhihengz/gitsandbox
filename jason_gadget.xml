@@ -8,7 +8,7 @@
   </ModulePrefs>
 <Content view="canvas" type="html"><![CDATA[
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-<div id="gameContent">This will get filled in from the server</div>
+<div id="gameContent" height="1500" >This will get filled in from the server</div>
 <script>
   getInitialScopes = function() {
     return [ 'https://www.googleapis.com/auth/emeraldsea.circles.read',
