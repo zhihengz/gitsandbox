@@ -17,7 +17,7 @@
   };
   
   apisAreReadyCallback = function(authorized) {
-    iframes.resize({height: 1200});
+//    iframes.resize({height: 1200});
     if (authorized) {
       $('#loginLink').html("Welcome!");
       console.log("Hooray! We are ready to go!");
