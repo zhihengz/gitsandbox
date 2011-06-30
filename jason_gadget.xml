@@ -10,7 +10,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 <div id="gameContent">
 <table width="768px" height="435px" align="center" valign="center" bgcolor="black">
-   <tr><td width="100%">
+   <tr width="100%"><td width="100%">
    <img src="http://com-ea2d-oz.s3.amazonaws.com/dal-ozdev/loading9.gif" alt="loading..."/>
    </td></tr>
 </table>
