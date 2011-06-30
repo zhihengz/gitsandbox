@@ -41,7 +41,7 @@
     if (response.rc == 200) {
       console.log( response.data );
       $("#gameContent").html(response.data);
-      iframes.resize({height: document.body.scrollHeight});
+//      iframes.resize({height: document.body.scrollHeight});
     } else {
       $("#gameContent").html("<p>Hmm... got response code " + response.rc + ". Check the console log.</p>");
       console.log(response);
