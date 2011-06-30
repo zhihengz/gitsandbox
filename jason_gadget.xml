@@ -8,7 +8,9 @@
   </ModulePrefs>
 <Content view="canvas" type="html"><![CDATA[
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-<div id="gameContent">This will get filled in from the server</div>
+<div id="gameContent">
+<img src="http://com-ea2d-oz.s3.amazonaws.com/dal-ozdev/loading9.gif" alt="loading..."/>
+</div>
 <script>
   getInitialScopes = function() {
     return [ 'https://www.googleapis.com/auth/emeraldsea.circles.read',
@@ -19,8 +21,7 @@
   apisAreReadyCallback = function(authorized) {
 //    iframes.resize({height: 1200});
     if (authorized) {
-      $('#loginLink').html("Welcome!");
-      console.log("Hooray! We are ready to go!");
+      console.log("user is authorized, go ahead...");
       token = google.getToken();
       loadUserInfo();
     } else {
