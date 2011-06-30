@@ -9,7 +9,7 @@
 <Content view="canvas" type="html"><![CDATA[
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 <div id="gameContent">
-<table width="600px" height="435px" align="center" valign="center">
+<table width="500px" height="435px" align="center" valign="center">
    <tr><td align="center">
    <img src="http://com-ea2d-oz.s3.amazonaws.com/dal-ozdev/loading9.gif" alt="loading..."/>
    </td></tr>
