@@ -8,6 +8,7 @@
   </ModulePrefs>
 <Content view="canvas" type="html"><![CDATA[
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+<!--
 <div id="waiting">
 <table width="760px" height="300px" align="center" valign="center">
    <tr><td align="center">
@@ -15,6 +16,7 @@
    </td></tr>
 </table>
 </div>
+-->
 <div id="gameContent">
 </div>
 <script>
@@ -51,7 +53,6 @@
       $("#gameContent").html(response.data);
 //      iframes.resize({height: document.body.scrollHeight});
     } else {
-      $("#waiting").hide();
       $("#gameContent").html("<p>Hmm... got response code " + response.rc + ". Check the console log.</p>");
       console.log(response);
     }
