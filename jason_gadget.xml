@@ -9,14 +9,11 @@
 <Content view="canvas" type="html"><![CDATA[
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 <div id="gameContent">
-<div width="768" height="435">
-<table width="100%" height="100%" align="center" valign="center">
+<table width="768px" height="435px" align="center" valign="center" bgcolor="black">
    <tr><td>
    <img src="http://com-ea2d-oz.s3.amazonaws.com/dal-ozdev/loading9.gif" alt="loading..."/>
    </td></tr>
-   </table>
-</div>
-</div>
+</table>
 </div>
 <script>
   getInitialScopes = function() {
