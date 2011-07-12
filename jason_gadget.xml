@@ -25,6 +25,7 @@
   apisAreReadyCallback = function(authorized) {
 //    iframes.resize({height: 1200});
     if (authorized) {
+      alert( "user is authorized");
       console.log("user is authorized, go ahead...");
       token = google.getToken();
       loadUserInfo();
