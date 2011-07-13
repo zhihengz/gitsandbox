@@ -7,13 +7,14 @@
     <Require feature="flash"/>
   </ModulePrefs>
 <Content view="canvas" type="html"><![CDATA[
-
+<!--
 <script src="http://ec2-184-72-143-197.compute-1.amazonaws.com:7070/oz/Namespace.js"></script>
 <script src="http://ec2-184-72-143-197.compute-1.amazonaws.com:7070/oz/jquery.js"></script>
 <script src="http://ec2-184-72-143-197.compute-1.amazonaws.com:7070/oz/com/ea2d/social/oz.js?refresh=3"></script>
 <script src="http://ec2-184-72-143-197.compute-1.amazonaws.com:7070/oz/com/ea2d/sandbox.js"></script>
 <script src="http://ec2-184-72-143-197.compute-1.amazonaws.com:7070/oz/social.js"></script>
 <script src="http://ec2-184-72-143-197.compute-1.amazonaws.com:7070/oz/app.js"></script>
+-->
 <script type="text/javascript">
 
 testCallback = function(data){
@@ -26,7 +27,10 @@ testCallback = function(data){
     'appsutil': {
 //      'apis_are_ready': com.ea2d.mysocial.init,
       'apis_are_ready': testCallback,
-      'required_scopes': com.ea2d.mysocial.data.initScope,
+//      'required_scopes': com.ea2d.mysocial.data.initScope,
+	'required_scopes': ['https://www.googleapis.com/auth/emeraldsea.circles.read',
+                         'https://www.googleapis.com/auth/userinfo.profile',
+                         'https://www.googleapis.com/auth/userinfo.email'],
      },
      'poclient': {
        'update_session': google.updateSessionCallback
@@ -38,6 +42,10 @@ testCallback = function(data){
      }
   }
 </script>
+<div>
+you shall got an annoying alert saying "I am calling back"
+</div>
+<!--
     <div id="login">
       <a href="#" onClick="com.ea2d.mysocial.allowAccess()">
 	Allow me to play the game
@@ -60,6 +68,7 @@ testCallback = function(data){
       <div id="fb-uid"></div>
       <div id="fb-token"></div>
     </div>
+-->
 ]]>
 </Content>
 </Module>
