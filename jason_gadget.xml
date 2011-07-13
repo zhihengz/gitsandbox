@@ -16,6 +16,7 @@
 </table>
 </div>
 <script>
+  alert( "hello");
   getInitialScopes = function() {
     return [ 'https://www.googleapis.com/auth/emeraldsea.circles.read',
              'https://www.googleapis.com/auth/userinfo.profile',
