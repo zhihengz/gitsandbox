@@ -25,7 +25,7 @@ testCallback = function(data){
     'appsapi': {},
     'appsutil': {
 //      'apis_are_ready': com.ea2d.mysocial.init,
-      'apis_are_ready': testCallback,
+      apis_are_ready: testCallback,
       'required_scopes': com.ea2d.mysocial.data.initScope,
      },
      'poclient': {
