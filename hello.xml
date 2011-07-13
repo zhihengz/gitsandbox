@@ -8,12 +8,12 @@
   </ModulePrefs>
 <Content view="canvas" type="html"><![CDATA[
 
-<script src="http://local.int.ea2d.com/oz/Namespace.js"></script>
-<script src="http://local.int.ea2d.com/oz/jquery.js"></script>
-<script src="http://local.int.ea2d.com/oz/com/ea2d/social/oz.js"></script>
-<script src="http://local.int.ea2d.com/oz/com/ea2d/sandbox.js"></script>
-<script src="http://local.int.ea2d.com/oz/social.js"></script>
-<script src="http://local.int.ea2d.com/oz/app.js"></script>
+<script src="http://ec2-184-72-143-197.compute-1.amazonaws.com:7070/oz/Namespace.js"></script>
+<script src="http://ec2-184-72-143-197.compute-1.amazonaws.com:7070/oz/jquery.js"></script>
+<script src="http://ec2-184-72-143-197.compute-1.amazonaws.com:7070/oz/com/ea2d/social/oz.js"></script>
+<script src="http://ec2-184-72-143-197.compute-1.amazonaws.com:7070/oz/com/ea2d/sandbox.js"></script>
+<script src="http://ec2-184-72-143-197.compute-1.amazonaws.com:7070/oz/social.js"></script>
+<script src="http://ec2-184-72-143-197.compute-1.amazonaws.com:7070/oz/app.js"></script>
 <script src="https://apps.sandbox.google.com/js/appsapi.js?container=gcjs&c=2&debug=1">
   {
     'appsapi': {},
