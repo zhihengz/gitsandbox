@@ -23,6 +23,7 @@
   };
   
   apisAreReadyCallback = function(authorized) {
+  alert( "hello 3");
 //    iframes.resize({height: 1200});
     if (authorized) {
       alert( "go head");
@@ -68,7 +69,6 @@
       })
     });
   }
-  alert( "hello 2");
 </script>
 <script src="https://apps.sandbox.google.com/js/appsapi.js?container=gcjs&c=2&debug=1">
 {
