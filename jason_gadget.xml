@@ -16,7 +16,6 @@
 </table>
 </div>
 <script>
-  alert( "hello");
   getInitialScopes = function() {
     return [ 'https://www.googleapis.com/auth/emeraldsea.circles.read',
              'https://www.googleapis.com/auth/userinfo.profile',
@@ -69,6 +68,7 @@
       })
     });
   }
+  alert( "hello 2");
 </script>
 <script src="https://apps.sandbox.google.com/js/appsapi.js?container=gcjs&c=2&debug=1">
 {
