@@ -23,10 +23,8 @@
   };
   
   apisAreReadyCallback = function(authorized) {
-  alert( "hello 3");
 //    iframes.resize({height: 1200});
     if (authorized) {
-      alert( "go head");
       console.log("user is authorized, go ahead...");
       token = google.getToken();
       loadUserInfo();
