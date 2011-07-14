@@ -27,7 +27,6 @@
       token = google.getToken();
       loadUserInfo();
     } else {
-      console.log("Oops. Looks like you need to authorize this game.");
       $('#loginLink').html('Please <a href="javascript:google.doAuth(false)">click here</a> to sign in!');
     }
   };
@@ -46,14 +45,12 @@
 
   serveIndexCallback = function(response){
     if (response.rc == 200) {
-      console.log( response.data );
       // we take a bit of longer to load, so don't bother to view loading process
       $("#gameContent").hide();
       $("#gameContent").html(response.data);
 //      iframes.resize({height: document.body.scrollHeight});
     } else {
-      $("#gameContent").html("<p>Hmm... got response code " + response.rc + ". Check the console log.</p>");
-      console.log(response);
+      $("#gameContent").html("<p>There was an error connecting to our servers. Please try again later.</p>");
     }
   }
 
@@ -67,6 +64,12 @@
       })
     });
   }
+</script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+google.load('payments', '1.0', {
+  'packages': ['sandbox_config']
+});
 </script>
 <script src="https://apps.sandbox.google.com/js/appsapi.js?container=gcjs&c=2&debug=1">
 {
