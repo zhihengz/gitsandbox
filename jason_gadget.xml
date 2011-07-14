@@ -11,7 +11,7 @@
 <div id="gameContent">
 <table width="760px" height="300px" align="center" valign="center">
    <tr><td align="center">
-   <img src="https://com-ea2d-oz.s3.amazonaws.com/dal-ozdev/loading9.gif" alt="loading..."/>
+   <img src="https://d1yp91umuokm39.cloudfront.net/dal-ozdev/loading9.gif" alt="loading..."/>
    </td></tr>
 </table>
 </div>
@@ -23,9 +23,7 @@
   };
   
   apisAreReadyCallback = function(authorized) {
-//    iframes.resize({height: 1200});
     if (authorized) {
-      console.log("user is authorized, go ahead...");
       token = google.getToken();
       loadUserInfo();
     } else {
@@ -36,10 +34,14 @@
 
   loadUserInfo = function() {
       google.plusone.api('/people/me', function(data) {
-        // I should probably do some error checking here
         playerId = data.id;
-        sendToken(playerId);
-      })
+        
+        if(playerId == 'undefined') {
+          $("#gameContent").html("<div align='center'><img src='https://d1yp91umuokm39.cloudfront.net/web_assets/images/ozErrorScreen.png'/></div>");
+        } else {
+          sendToken(playerId);
+        }
+      });
   }
 
   serveIndexCallback = function(response){
@@ -57,8 +59,6 @@
 
   sendToken = function(playerId) {
     var token = google.getToken();
-    console.log(token);
-    
     gadgets.io.makeRequest("http://ec2-184-72-143-197.compute-1.amazonaws.com:7070/controller/game/oz/1/", serveIndexCallback, {
       'METHOD': 'POST',
       'POST_DATA': gadgets.io.encodeValues({
