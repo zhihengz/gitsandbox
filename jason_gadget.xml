@@ -17,7 +17,7 @@
 </div>
 <script>
   getInitialScopes = function() {
-    return [ 'https://www.googleapis.com/auth/emeraldsea.circles.read',
+    return [ 'https://www.googleapis.com/auth/plus.circles.read',
              'https://www.googleapis.com/auth/userinfo.profile',
              'https://www.googleapis.com/auth/userinfo.email'];
   };
