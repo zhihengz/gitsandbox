@@ -8,6 +8,7 @@
   </ModulePrefs>
 <Content view="canvas" type="html"><![CDATA[
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
 <div id="gameContent">
 <table width="760px" height="300px" align="center" valign="center">
    <tr><td align="center">
