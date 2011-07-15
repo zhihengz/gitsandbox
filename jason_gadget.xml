@@ -44,11 +44,9 @@
   };
 
   serveIndexCallback = function(response){
-    alert( response.rc);
     if (response.rc == 200) {
       // we take a bit of longer to load, so don't bother to view loading process
-      console.log( "loading...");
-      console.log( response.data);
+      alert( response.data );
       $("#gameContent").hide();
       $("#gameContent").html(response.data);
 //      iframes.resize({height: document.body.scrollHeight});
