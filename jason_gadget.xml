@@ -66,7 +66,6 @@
     });
   };
 </script>
-<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
 google.load('payments', '1.0', {
