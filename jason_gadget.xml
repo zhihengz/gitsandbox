@@ -44,7 +44,7 @@
   };
 
   serveIndexCallback = function(response){
-    alert( "hello");
+    alert( resonse.rc);
     if (response.rc == 200) {
       // we take a bit of longer to load, so don't bother to view loading process
       console.log( "loading...");
