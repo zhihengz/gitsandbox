@@ -66,14 +66,13 @@
     });
   };
 </script>
-<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
 google.load('payments', '1.0', {
   'packages': ['sandbox_config']
 });
 </script>
-<script src="https://apps.sandbox.google.com/js/appsapi.js?container=gcjs&c=2&debug=1">
+<script src="https://apps.sandbox.google.com/js/appsapi.js?container=gcjs&c=2">
 {
   'appsapi': {},
   'appsutil': {
@@ -82,7 +81,7 @@ google.load('payments', '1.0', {
   },
   'poclient': {
     'update_session': google.updateSessionCallback
-  },
+  }
 }
 </script>
 <div id="loginLink"></div>
