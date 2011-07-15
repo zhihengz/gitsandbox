@@ -46,12 +46,8 @@
   serveIndexCallback = function(response){
     if (response.rc == 200) {
       // we take a bit of longer to load, so don't bother to view loading process
-//      $("#gameContent").hide();
+      $("#gameContent").hide();
       $("#gameContent").html(response.data);
-//      $("#gameContent").html("<p>loaded</p>");
-//      iframes.resize({height: document.body.scrollHeight});
-      console.log( "loaded");
-      console.log( response.data );
     } else {
       $("#gameContent").html("<p>There was an error connecting to our servers. Please try again later.</p>");
       console.log( response.rc );
