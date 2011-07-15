@@ -41,7 +41,7 @@
           sendToken(playerId);
         }
       });
-  }
+  };
 
   serveIndexCallback = function(response){
     if (response.rc == 200) {
@@ -51,8 +51,9 @@
 //      iframes.resize({height: document.body.scrollHeight});
     } else {
       $("#gameContent").html("<p>There was an error connecting to our servers. Please try again later.</p>");
+      console.log( response );
     }
-  }
+  };
 
   sendToken = function(playerId) {
     var token = google.getToken();
@@ -63,7 +64,7 @@
         'playerId': playerId
       })
     });
-  }
+  };
 </script>
 <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
