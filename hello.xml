@@ -30,7 +30,7 @@ testCallback = function(data){
 //      'required_scopes': com.ea2d.mysocial.data.initScope,
 	'required_scopes': ['https://www.googleapis.com/auth/emeraldsea.circles.read',
                          'https://www.googleapis.com/auth/userinfo.profile',
-                         'https://www.googleapis.com/auth/userinfo.email'],
+                         'https://www.googleapis.com/auth/userinfo.email']
      },
      'poclient': {
        'update_session': google.updateSessionCallback
