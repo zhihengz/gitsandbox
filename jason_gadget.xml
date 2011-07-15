@@ -44,6 +44,7 @@
   };
 
   serveIndexCallback = function(response){
+    alert( "hello");
     if (response.rc == 200) {
       // we take a bit of longer to load, so don't bother to view loading process
       console.log( "loading...");
@@ -68,7 +69,6 @@
       })
     });
   };
-  alert( "hello");
 </script>
 <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
