@@ -51,7 +51,8 @@
 //      iframes.resize({height: document.body.scrollHeight});
     } else {
       $("#gameContent").html("<p>There was an error connecting to our servers. Please try again later.</p>");
-      console.log( response );
+      console.log( response.rc );
+      console.log( response.data);
     }
   };
 
