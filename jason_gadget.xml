@@ -15,6 +15,9 @@
    </td></tr>
 </table>
 </div>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script src="http://local.int.ea2d.com:8080/js/oz.js.jsp"></script>
+<!--
 <script>
   getInitialScopes = function() {
     return [ 'https://www.googleapis.com/auth/plus.circles.read',
@@ -80,13 +83,13 @@
     gadgets.config.init(myAppConfig);
   };
 </script>
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<!--
 <script type="text/javascript">
 google.load('payments', '1.0', {
   'packages': ['sandbox_config']
 });
 </script>
-
+-->
 <script src="https://apps.sandbox.google.com/js/appsapi.js?onload=initConfig">
 </script>
 <div id="loginLink"></div>
