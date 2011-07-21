@@ -16,7 +16,11 @@
 	    <Scope ref="circlesReadonly"/>		
 	    <Scope ref="userinfoProfile"/>	
 	    <Scope ref="userinfoEmail"/>			
-	  </Extension>		
+	  </Extension>
+	  <Support>
+	    <Link rel="privacy-policy" href="http://tos.ea.com/legalapp/WEBPRIVACY/US/en/PC/"/>
+	    <Link rel="terms-of-service" href="http://tos.ea.com/legalapp/WEBTERMS/US/en/PC/"/> 
+	  </Support>
 	  <Scope id="circlesReadonly">		
 	    <Url>https://www.googleapis.com/auth/plus.circles.read</Url>		
 	  </Scope>		
