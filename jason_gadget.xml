@@ -8,7 +8,7 @@
   </ModulePrefs>
 <Content view="canvas" type="html"><![CDATA[
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-<div id="gameContent">
+<div id="gameContent" style="height:800px">
 <table width="760px" height="300px" align="center" valign="center">
    <tr><td align="center">
    <img src="https://d1yp91umuokm39.cloudfront.net/dal-ozdev/loading9.gif" alt="loading..."/>
