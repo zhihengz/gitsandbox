@@ -65,6 +65,20 @@
       })
     });
   };
+  
+  initConfig = function() {
+    var myAppConfig = {
+  	'appsapi': {},
+  	'appsutil': {
+    		'apis_are_ready': apisAreReadyCallback,
+    		'required_scopes': getInitialScopes()
+  	},
+  	'shindig.auth': {
+    		'authToken': ''
+  	}
+    };
+    gadgets.config.init(myAppConfig);
+  };
 </script>
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
@@ -72,17 +86,8 @@ google.load('payments', '1.0', {
   'packages': ['sandbox_config']
 });
 </script>
-<script src="https://apps.sandbox.google.com/js/appsapi.js?container=gcjs&c=2">
-{
-  'appsapi': {},
-  'appsutil': {
-    'apis_are_ready': apisAreReadyCallback,
-    'required_scopes': getInitialScopes()
-  },
-  'poclient': {
-    'update_session': google.updateSessionCallback
-  }
-}
+
+<script src="https://apps.sandbox.google.com/js/appsapi.js?onload=initConfig">
 </script>
 <div id="loginLink"></div>
 <div id="ozDebug"></div>
