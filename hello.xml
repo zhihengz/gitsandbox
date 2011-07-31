@@ -4,7 +4,6 @@
     <Require feature="googleapis"/>
     <Require feature="locked-domain"/>
     <Require feature="views"/>
-    <Require feature="flash"/>
   </ModulePrefs>
 <Content view="canvas" type="html"><![CDATA[
 <!--
