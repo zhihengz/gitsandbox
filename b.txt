@@ -1,1 +1,2 @@
 second file
+change in b1 again after a.txt commit
