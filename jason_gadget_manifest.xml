@@ -1,33 +1,33 @@
-<?xml version="1.0" encoding="UTF-8" ?>		
-	<ApplicationManifest xmlns="http://schemas.google.com/ApplicationManifest/2009">		
-	  <Extension id="game" type="gadget">		
-	    <Name>JZ-DAL</Name>		
-	    <Description>DAL in Oz, wut wut!</Description>		
-	    <Screenshot>http://com-ea2d-oz.s3.amazonaws.com/dal-ozdev/billboard768x435.png</Screenshot>		
-	    <Icon>http://com-ea2d-oz.s3.amazonaws.com/dal-ozdev/icon200x240.png</Icon>		
-	    <Icon type="billboard768x435">http://com-ea2d-oz.s3.amazonaws.com/dal-ozdev/billboard768x435.png</Icon>		
-	    <Icon type="icon200x240">http://com-ea2d-oz.s3.amazonaws.com/dal-ozdev/icon200x240.png</Icon>		
-	    <Icon type="icon70x84">http://com-ea2d-oz.s3.amazonaws.com/dal-ozdev/icon70x84.png</Icon>		
-	    <Icon type="icon32x39">http://com-ea2d-oz.s3.amazonaws.com/dal-ozdev/icon32x39.png</Icon>		
-	    <Icon type="icon24x29">http://com-ea2d-oz.s3.amazonaws.com/dal-ozdev/icon24x29.png</Icon>		
-	    <Container name="apps" />		
-	    <!-- The Extension Url element gives the location of the gadget spec -->		
-	    <Url>https://raw.github.com/zhihengz/gitsandbox/master/jason_gadget.xml</Url>		
-	    <Scope ref="circlesReadonly"/>		
-	    <Scope ref="userinfoProfile"/>	
-	    <Scope ref="userinfoEmail"/>			
-	  </Extension>
-	  <Support>
-	    <Link rel="privacy-policy" href="http://tos.ea.com/legalapp/WEBPRIVACY/US/en/PC/"/>
-	    <Link rel="terms-of-service" href="http://tos.ea.com/legalapp/WEBTERMS/US/en/PC/"/> 
-	  </Support>
-	  <Scope id="circlesReadonly">		
-	    <Url>https://www.googleapis.com/auth/plus.circles.read</Url>		
-	  </Scope>		
-	  <Scope id="userinfoProfile">		
-	    <Url>https://www.googleapis.com/auth/userinfo.profile</Url>		
-	  </Scope>		
-	  <Scope id="userinfoEmail">		
-	    <Url>https://www.googleapis.com/auth/userinfo.email</Url>		
-	  </Scope>				
-	</ApplicationManifest>
+<?xml version="1.0" encoding="UTF-8"?>
+<ApplicationManifest xmlns="http://schemas.google.com/ApplicationManifest/2009">
+  <Extension id="game" type="gadget">
+    <Name>Dragon Age Legends Local Development</Name>
+    <Description>DAL Local Development</Description>
+    <Screenshot>http://com-ea2d-oz.s3.amazonaws.com/dal-ozdev/billboard768x435.png</Screenshot>
+    <Icon>http://com-ea2d-oz.s3.amazonaws.com/dal-ozdev/icon200x240.png</Icon>
+    <Icon type="billboard768x435">http://com-ea2d-oz.s3.amazonaws.com/dal-ozdev/billboard768x435.png</Icon>
+    <Icon type="icon200x240">http://com-ea2d-oz.s3.amazonaws.com/dal-ozdev/icon200x240.png</Icon>
+    <Icon type="icon70x84">http://com-ea2d-oz.s3.amazonaws.com/dal-ozdev/icon70x84.png</Icon>
+    <Icon type="icon32x39">http://com-ea2d-oz.s3.amazonaws.com/dal-ozdev/icon32x39.png</Icon>
+    <Icon type="icon24x29">http://com-ea2d-oz.s3.amazonaws.com/dal-ozdev/icon24x29.png</Icon>
+    <Container name="apps"/>
+    <!-- The Extension Url element gives the location of the gadget spec -->
+    <Url>https://raw.github.com/zhihengz/gitsandbox/master/jason_gadget.xml</Url>
+    <Scope ref="circlesReadonly"/>
+    <Scope ref="userinfoProfile"/>
+    <Scope ref="userinfoEmail"/>
+  </Extension>
+  <Support>
+    <Link rel="privacy-policy" href="http://tos.ea.com/legalapp/WEBPRIVACY/US/en/PC/"/>
+    <Link rel="terms-of-service" href="http://tos.ea.com/legalapp/WEBTERMS/US/en/PC/"/>
+  </Support>
+  <Scope id="circlesReadonly">
+    <Url>https://www.googleapis.com/auth/plus.circles.read</Url>
+  </Scope>
+  <Scope id="userinfoProfile">
+    <Url>https://www.googleapis.com/auth/userinfo.profile</Url>
+  </Scope>
+  <Scope id="userinfoEmail">
+    <Url>https://www.googleapis.com/auth/userinfo.email</Url>
+  </Scope>
+</ApplicationManifest>
