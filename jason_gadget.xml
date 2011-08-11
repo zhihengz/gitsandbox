@@ -16,7 +16,8 @@
 </table>
 </div>
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-<script src="http://local.int.ea2d.com:8080/controller/Google/1/loading.js"></script>
+<!--script src="http://local.int.ea2d.com:8080/controller/Google/1/loading.js"></script-->
+<script src="http://ec2-184-72-143-197.compute-1.amazonaws.com:7070/controller/Google/1/loading.js"></script-->
 <script src="https://apis.google.com/js/appsapi.js?onload=initConfig"></script>
 <div id="loginLink"></div>
 <div id="ozDebug"></div>
