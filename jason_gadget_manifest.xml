@@ -22,7 +22,7 @@
     <Link rel="terms-of-service" href="http://tos.ea.com/legalapp/WEBTERMS/US/en/PC/"/>
   </Support>
   <Scope id="circlesReadonly">
-    <Url>https://www.googleapis.com/auth/plus.circles.read</Url>
+    <Url>https://www.googleapis.com/auth/plus.people.recommended</Url>
   </Scope>
   <Scope id="userinfoProfile">
     <Url>https://www.googleapis.com/auth/userinfo.profile</Url>
