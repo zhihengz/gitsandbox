@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ApplicationManifest xmlns="http://schemas.google.com/ApplicationManifest/2009">
   <Extension id="game" type="gadget">
-    <Name>Dragon Age Legends Local Development</Name>
-    <Description>DAL Local Development</Description>
+    <Name>jz dal</Name>
+    <Description>DAL jz</Description>
     <Screenshot>http://com-ea2d-oz.s3.amazonaws.com/dal-ozdev/billboard768x435.png</Screenshot>
     <Icon>http://com-ea2d-oz.s3.amazonaws.com/dal-ozdev/icon200x240.png</Icon>
     <Icon type="billboard768x435">http://com-ea2d-oz.s3.amazonaws.com/dal-ozdev/billboard768x435.png</Icon>
