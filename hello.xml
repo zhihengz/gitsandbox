@@ -17,7 +17,7 @@
 <script type="text/javascript">
 
 testCallback = function(data){
-   alert( "I am calling back");
+  alert( "I am calling back");
 }
 </script>
 <script src="https://apps.sandbox.google.com/js/appsapi.js?container=gcjs&c=2&debug=1">
